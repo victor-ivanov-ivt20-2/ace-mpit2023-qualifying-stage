@@ -45,5 +45,43 @@ export const userRouter = createTRPCRouter({
         } catch (error) {
             
         }
+    }),
+    createBusinessman: protectedProcedure
+    .input(z.object({
+        email: z.string(),
+        inn: z.string(),
+        name: z.string(),
+        address: z.number()        
+    })).mutation(async ({ctx, input}) => {
+        try {
+            const user = await ctx.prisma.user.findUnique({
+                where: {
+                    email: input.email
+                }
+            })
+            if (user?.id) {
+                const busnessman = await ctx.prisma.busnessman.create({
+                    data: {
+                        inn: input.inn,
+                        name: input.name,
+                        addressId: input.address,
+                        status: "Действующее",
+                        userId: user?.id
+                    }
+                })
+                if (busnessman.id)
+                await ctx.prisma.user.update({
+                    where: {
+                        email: input.email
+                    },
+                    data: {
+                        busnessmanId: busnessman.id
+                    }
+                })
+                return busnessman
+            }        
+        } catch (error) {
+            
+        }
     })
 })
