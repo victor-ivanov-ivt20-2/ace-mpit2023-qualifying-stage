@@ -1,23 +1,7 @@
 version: "3.9"
 services:
-  db:
-    image: postgres
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=secret
-      - POSTGRES_DB=db
-
-    ports:
-      - "5432:5432"
-    volumes:
-      - "db:/var/lib/postgresql"
-    networks:
-      - ace
   app:
     platform: "linux/amd64"
-    depends_on:
-      - db
     build:
       context: .
       dockerfile: Dockerfile
@@ -26,11 +10,6 @@ services:
       - "3000:3000"
     image: t3-app
     env_file:
-      - .env
-    networks:
-      - ace
+      - .env.example
 volumes:
   db:
-networks:
-  ace:
-    driver: bridge
