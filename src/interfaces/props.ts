@@ -11,7 +11,7 @@ export interface SessionOnly {
 
 export interface Button {
     children: ReactNode
-    onClick: () => void
+    onClick: () => void 
 }
 
 export interface Input {

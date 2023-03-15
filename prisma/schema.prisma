@@ -144,3 +144,15 @@ model House {
     houseSize    Int
     landSize     Int
 }
+
+model Request {
+    id Int @id @default(autoincrement())
+    userId String
+    tenantId String
+    addressId Int
+    People Int
+    start_at DateTime
+    finish_at DateTime
+    description String
+    status String
+}

@@ -48,7 +48,7 @@ export const userRouter = createTRPCRouter({
     }),
     createBusinessman: protectedProcedure
     .input(z.object({
-        email: z.string(),
+        email: z.coerce.string(),
         inn: z.string(),
         name: z.string(),
         address: z.number()        

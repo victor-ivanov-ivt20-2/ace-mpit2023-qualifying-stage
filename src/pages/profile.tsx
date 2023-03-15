@@ -1,20 +1,13 @@
-
 import { useSession } from "next-auth/react"
 import type { GetServerSideProps, GetServerSidePropsContext } from "next/types"
-import { type FC } from "react"
 import { getServerAuthSession } from "~/server/auth"
-// import { getServerAuthSession } from "~/server/auth"
-
-const Profile: FC = () => {
+import ProfilePage from '~/components/profile' 
+export default function Profile() {
     const { data: session } = useSession()
     return (
-        <div>
-            {session?.user.name}
-        </div>
+        <ProfilePage session={session} />
     )
 }
-
-export default Profile
 
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const session = await getServerAuthSession(ctx)
@@ -22,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
     if (session)
         return {
             props: {
-                session
+                session: session
             }
         }
     return {
