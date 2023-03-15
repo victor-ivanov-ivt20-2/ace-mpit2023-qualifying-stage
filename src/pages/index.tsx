@@ -1,8 +1,13 @@
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import { useEffect } from "react";
 import MainPage from "~/components/main";
 import { getServerAuthSession } from "~/server/auth";
 const Home = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { session } = props
+  useEffect(() => {
+    console.log(session)
+    console.log("he")
+  }, [])
   return (
     <MainPage session={session} />
   );
