@@ -1,13 +1,18 @@
 import { type FC } from "react"
-import type { SessionOnly } from "~/interfaces/props"
 import LogoComponent from "~/assets/svg/LogoComponent"
 import Link from "next/link"
 import { HeaderButton } from "../ui/buttons"
 import { signIn, signOut } from "next-auth/react"
+import type { Session } from "next-auth"
+import type { Tenant } from "@prisma/client"
 // import { PrimaryButton } from "../ui/buttons"
 // import { signOut, signIn } from "next-auth/react"
 // import Link from "next/link"
-const Header: FC<SessionOnly> = ({ session }) => {
+interface Header {
+    session: Session | null,
+    tenant?: Tenant | null 
+}
+const Header: FC<Header> = ({ session, tenant }) => {
 
     return (
         <header className="pt-[33px]">
@@ -19,6 +24,7 @@ const Header: FC<SessionOnly> = ({ session }) => {
                 <nav className="flex gap-[48px] items-center">
                     <ul className="font-bold flex gap-8 text-base leading-[24px] text-blue">
                         <li><Link href="">Главная</Link></li>
+                        {tenant ? <li><Link href="">Заявки</Link></li> : ""}
                         <li><Link href="">О нас</Link></li>
                     </ul>
                     {

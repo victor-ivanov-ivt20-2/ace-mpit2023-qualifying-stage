@@ -3,14 +3,16 @@ import { type FC } from "react"
 import Search from "./Search"
 import Header from "./Header"
 import RequestCard from "../requests/requestCard"
+import type { Tenant } from "@prisma/client"
 interface MainPage {
-    session: Session | null
+    session: Session | null,
+    tenant?: Tenant | null 
 }
-const MainPage: FC<MainPage> = ({ session }) => {
+const MainPage: FC<MainPage> = ({ session, tenant }) => {
 
     return (
         <div className=" bg-white rounded-[60px]">
-            <Header session={session} />
+            <Header tenant={tenant} session={session} />
             <div className="container">
                 <Search></Search>
             </div>

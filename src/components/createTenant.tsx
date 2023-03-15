@@ -1,8 +1,10 @@
 import { useState, type FC } from "react"
 import { api } from "~/utils/api"
 import { PrimaryInput } from "./ui/inputs"
+import {useRouter} from "next/router"
 
 const CreateTenant: FC = () => {
+    const router = useRouter()
     const createTenant = api.user.createTenant.useMutation()
     const [email, setEmail] = useState<string>()
     const [lastname, setLastname] = useState<string>()
@@ -21,6 +23,8 @@ const CreateTenant: FC = () => {
                 secondname: secondname,
                 phone: phone
             })
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            void router.replace('/')
         }
 
     }

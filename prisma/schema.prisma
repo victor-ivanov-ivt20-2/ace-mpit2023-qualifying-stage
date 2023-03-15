@@ -88,8 +88,8 @@ model Busnessman {
 
 model Tenant {
     id              String            @id @default(cuid())
-    userId          String            @unique
     phone           Decimal           @db.Decimal(11, 0)
+    userId          String
     firstname       String
     secondname      String?
     lastname        String
@@ -146,13 +146,13 @@ model House {
 }
 
 model Request {
-    id Int @id @default(autoincrement())
-    userId String
-    tenantId String
-    addressId Int
-    People Int
-    start_at DateTime
-    finish_at DateTime
+    id          Int      @id @default(autoincrement())
+    userId      String
+    tenantId    String
+    addressId   Int
+    people      Int
+    start_at    DateTime
+    finish_at   DateTime
     description String
-    status String
+    status      String
 }
