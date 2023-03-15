@@ -1,28 +1,19 @@
-# Create T3 App
+# МПИТ-2023
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Команда ♠ ACE ♠ 
 
-## What's next? How do I make an app with this?
+|     | Дизайнер      | Менеджер  | Разработчик             |
+|-----|---------------|-----------|-------------------------|
+| ФИО | Андреев Айтал Николаевич | Степанов Александр Михайлович  | Иванов Виктор Алдарович |
+|     |               |           |                         |
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Стек технологий:
+1. NextJS - открытый JavaScript фреймворк, созданный поверх React.js для создания веб-приложений, созданный компанией Vercel. Фреймворк был предназначен для решения проблемы React.js, связанную с отрисовкой приложения на стороне сервера - SSR. Работает на сервере и в браузере.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+    Библиотеки для NextJS:
+    1. tRPC - библиотека, которая позволяет создавать полностью безопасные API без необходимости создания схем или генерации кода.
+    2. NextAuth - библиотека для авторизации пользователей
+2. Prisma - ORM Postgresql
+3. Docker - программное обеспечение для автоматизации развёртывания и управления приложениями в средах с поддержкой контейнеризации, контейнеризатор приложений.
+4. TailwindCSS - CSS-фреймворк с открытым исходным кодом. 
+5. TypeScript - Типизированный язык программирования для JavaScript
