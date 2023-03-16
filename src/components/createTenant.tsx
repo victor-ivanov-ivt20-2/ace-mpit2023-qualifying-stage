@@ -6,7 +6,6 @@ import {useRouter} from "next/router"
 const CreateTenant: FC = () => {
     const router = useRouter()
     const createTenant = api.user.createTenant.useMutation()
-    const [email, setEmail] = useState<string>()
     const [lastname, setLastname] = useState<string>()
     const [firstname, setFirstname] = useState<string>()
     const [secondname, setSecondname] = useState<string>()
@@ -15,11 +14,8 @@ const CreateTenant: FC = () => {
     const [region, setRegion] = useState<string>()
     const register = (e: { preventDefault: () => void }) => {
         e.preventDefault()
-        console.log(email)
-        if (email && lastname && firstname && secondname && phone && city && region) {
-            console.log(email)
+        if (lastname && firstname && secondname && phone && city && region) {
             createTenant.mutate({
-                email: email,
                 lastname: lastname,
                 firstname: firstname,
                 secondname: secondname,
@@ -35,8 +31,6 @@ const CreateTenant: FC = () => {
     return (
         <>
             <form className="flex flex-col gap-2 mt-20" onSubmit={register}>
-                <label>Почта</label>
-                <PrimaryInput onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Почта агента" />
                 <label>Фамилия</label>
                 <PrimaryInput onChange={(e) => setLastname(e.target.value)} value={lastname} placeholder="Фамилия" />
                 <label>Имя</label>

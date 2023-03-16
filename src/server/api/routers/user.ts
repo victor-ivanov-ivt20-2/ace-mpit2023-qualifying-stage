@@ -9,7 +9,6 @@ import {
 export const userRouter = createTRPCRouter({
     createTenant: protectedProcedure
         .input(z.object({
-            email: z.string(),
             firstname: z.string(),
             secondname: z.string(),
             lastname: z.string(),
@@ -19,35 +18,17 @@ export const userRouter = createTRPCRouter({
         }))
         .mutation(async ({ ctx, input }) => {
             try {
-                const user = await ctx.prisma.user.findUnique({
-                    where: {
-                        email: input.email
-                    }
-                })
-                if (user?.id) {
-                    const tenant = await ctx.prisma.tenant.create({
+                await ctx.prisma.tenant.create({
                         data: {
                             firstname: input.firstname,
                             secondname: input.secondname,
                             lastname: input.lastname,
                             phone: input.phone,
                             city: input.city,
-                            region: input.region,
-                            userId: user?.id
+                            region: input.region
                         }
                     })
-                    if (tenant.id)
-                        await ctx.prisma.user.update({
-                            where: {
-                                email: input.email
-                            },
-                            data: {
-                                tenantId: tenant.id
-                            }
-                        })
-                    return tenant
-                }
-            } catch (error) {
+                } catch (error) {
 
             }
         }),

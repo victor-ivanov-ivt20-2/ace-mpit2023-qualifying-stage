@@ -100,8 +100,8 @@ model Busnessman {
 
 model Tenant {
     id              String            @id @default(cuid())
-    phone           Decimal           @db.Decimal(11, 0)
-    userId          String
+    phone           Decimal           @db.Decimal(11, 0) @unique
+    userId          String?
     firstname       String
     secondname      String?
     lastname        String

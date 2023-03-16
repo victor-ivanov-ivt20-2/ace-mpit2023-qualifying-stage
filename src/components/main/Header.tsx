@@ -26,7 +26,7 @@ const Header: FC<Header> = ({ session, tenant }) => {
                     <ul className="font-bold flex gap-8 text-base leading-[24px] text-blue">
                         <li><Link href="/">Главная</Link></li>
                         {session?.user ? <li><Link href={tenant ? "/inbox" : "/myreq"}>Заявки</Link></li> : ""}
-                        <li><Link href="">О нас</Link></li>
+                        <li><Link href="/about">О нас</Link></li>
                     </ul>
                     {
                         session?.user.email ? <HeaderButton color="rgba(49, 125, 252, 0.12)" onClick={() => void router.push("/profile")}>Профиль</HeaderButton>
