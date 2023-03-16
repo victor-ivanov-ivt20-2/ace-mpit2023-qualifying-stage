@@ -6,5 +6,10 @@
     margin: 0 auto;
 }
 body {
-    background-color: #1E293B;
+    background-color: #317DFC;
+}
+.modal {
+    @apply w-screen h-screen absolute top-0 flex justify-center items-center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
 }

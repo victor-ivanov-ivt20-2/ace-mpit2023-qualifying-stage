@@ -8,7 +8,13 @@ import {
 export const tenantRouter = createTRPCRouter({
     getAllTenantsProperty: publicProcedure.
         query(async ({ ctx }) => {
-            return ctx.prisma.tenantsProperty.findMany()
+            return ctx.prisma.tenant.findMany({
+                select: {
+                    city: true,
+                    region: true,
+                    id: true
+                }
+            })
         }),
     getTenantByUserId: publicProcedure.input(z.string()).query(async ({ ctx, input }) => {
         const user = await ctx.prisma.user.findUnique({

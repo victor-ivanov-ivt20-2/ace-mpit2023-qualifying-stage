@@ -1,0 +1,61 @@
+.inputs {
+    input {
+        width: 300px;
+        height: 54px;
+
+        /* slate/50 */
+        background: #F8FAFC;
+
+        /* slate/200 */
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: 16px 20px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        /* identical to box height */
+
+        /* slate/900 */
+        color: #0F172A;
+    }
+    button {
+        width: 300px;
+        height: 54px;
+
+        /* slate/50 */
+        background: #F8FAFC;
+
+        /* slate/200 */
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 60px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        /* identical to box height */
+
+        /* slate/900 */
+        color: #0F172A;
+    }
+    button:hover {
+        background-color: #317DFC;
+        color: #fff;
+    }
+    label {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+
+        /* slate/500 */
+        color: #64748B;
+    }
+    > div {
+        @apply flex gap-8 mb-[31px];
+        > div {
+            @apply flex flex-col gap-2;
+        }
+    }
+}

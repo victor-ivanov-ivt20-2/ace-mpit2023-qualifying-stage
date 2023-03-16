@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Request" ALTER COLUMN "start_at" SET DATA TYPE TEXT,
+ALTER COLUMN "finish_at" SET DATA TYPE TEXT;

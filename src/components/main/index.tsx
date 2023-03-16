@@ -4,25 +4,14 @@ import Search from "./Search"
 import Header from "./Header"
 import RequestCard from "../requests/requestCard"
 import type { Tenant } from "@prisma/client"
-interface MainPage {
-    session: Session | null,
-    tenant?: Tenant | null 
-}
-const MainPage: FC<MainPage> = ({ session, tenant }) => {
+const MainPage: FC = () => {
 
     return (
         <div className=" bg-white rounded-[60px]">
-            <Header tenant={tenant} session={session} />
+            {/* <Header tenant={tenant} session={session} /> */}
             <div className="container">
                 <Search></Search>
             </div>
-            <RequestCard 
-            address={1} 
-            description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida ullamcorper velit. Vestibulum ac ullamcorper quam, eu aliquam tortor."} 
-            id={2} status="s" people={5} start_at={new Date()} finsih_at={new Date(2023, 5, 3)} userId="1" tenantId="2"
-            
-            />
-            
             {/* <CreateTenant></CreateTenant> */}
         </div>
     )

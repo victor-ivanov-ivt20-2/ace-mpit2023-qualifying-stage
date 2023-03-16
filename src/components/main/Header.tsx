@@ -5,15 +5,16 @@ import { HeaderButton } from "../ui/buttons"
 import { signIn, signOut } from "next-auth/react"
 import type { Session } from "next-auth"
 import type { Tenant } from "@prisma/client"
-// import { PrimaryButton } from "../ui/buttons"
-// import { signOut, signIn } from "next-auth/react"
-// import Link from "next/link"
+import { useAppDispatch } from "~/hook"
+import { setActive } from "~/store/modal.slice"
+import { useRouter } from "next/router"
 interface Header {
     session: Session | null,
     tenant?: Tenant | null 
 }
 const Header: FC<Header> = ({ session, tenant }) => {
-
+    const router = useRouter()
+    const dispatch = useAppDispatch()
     return (
         <header className="pt-[33px]">
             <div className="container flex justify-between">
@@ -23,13 +24,13 @@ const Header: FC<Header> = ({ session, tenant }) => {
                 </Link>
                 <nav className="flex gap-[48px] items-center">
                     <ul className="font-bold flex gap-8 text-base leading-[24px] text-blue">
-                        <li><Link href="">Главная</Link></li>
-                        {tenant ? <li><Link href="">Заявки</Link></li> : ""}
+                        <li><Link href="/">Главная</Link></li>
+                        {session?.user ? <li><Link href={tenant ? "/inbox" : "/myreq"}>Заявки</Link></li> : ""}
                         <li><Link href="">О нас</Link></li>
                     </ul>
                     {
-                        session?.user.email ? <HeaderButton color="rgba(49, 125, 252, 0.12)" onClick={() => void signOut()}>{session?.user.email}</HeaderButton>
-                        : <HeaderButton onClick={() => void signIn("google", { redirect: false })}>Войти</HeaderButton>
+                        session?.user.email ? <HeaderButton color="rgba(49, 125, 252, 0.12)" onClick={() => void router.push("/profile")}>Профиль</HeaderButton>
+                        : <HeaderButton onClick={() => void dispatch(setActive(true))}>Войти</HeaderButton>
                         
                     }
                 </nav>

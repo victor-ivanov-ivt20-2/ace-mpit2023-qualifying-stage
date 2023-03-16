@@ -1,11 +1,14 @@
-import { useSession } from "next-auth/react"
+
 import type { GetServerSideProps, GetServerSidePropsContext } from "next/types"
 import { getServerAuthSession } from "~/server/auth"
-import ProfilePage from '~/components/profile' 
+import ProfilePage from '~/components/profile'
+import Layout from "~/layouts/layout"
+
 export default function Profile() {
-    const { data: session } = useSession()
     return (
-        <ProfilePage session={session} />
+        <Layout>
+            <ProfilePage />
+        </Layout>
     )
 }
 

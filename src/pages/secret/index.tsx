@@ -2,7 +2,7 @@ import CreateTenant from "~/components/createTenant"
 
 const Secret = () => {
     return (
-        <div className="flex bg-slate-500 justify-center w-[500px] items-center m-auto mt-20">
+        <div className="flex flex-col w-screen h-screen justify-content items-center bg-slate-400">
             <CreateTenant></CreateTenant>
         </div>
     )

@@ -69,6 +69,18 @@ model User {
     sessions      Session[]
 }
 
+model Information {
+    id         Int     @id @default(autoincrement())
+    userId     String
+    firstname  String
+    secondname String
+    lastname   String
+    birthday   String
+    phone      String
+    passport   String?
+    inn        String?
+}
+
 model VerificationToken {
     identifier String
     token      String   @unique
@@ -93,6 +105,8 @@ model Tenant {
     firstname       String
     secondname      String?
     lastname        String
+    city            String?
+    region          String?
     description     String?
     tenantsProperty TenantsProperty[]
 }
@@ -148,11 +162,12 @@ model House {
 model Request {
     id          Int      @id @default(autoincrement())
     userId      String
-    tenantId    String
-    addressId   Int
-    people      Int
-    start_at    DateTime
-    finish_at   DateTime
-    description String
-    status      String
+    tenantId    String?
+    address     String
+    people      String
+    start_at    String
+    finish_at   String
+    description String?
+    status      String?
+    price       Decimal?  @db.Decimal(9, 2)
 }

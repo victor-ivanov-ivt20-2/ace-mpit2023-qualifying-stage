@@ -11,17 +11,21 @@ const CreateTenant: FC = () => {
     const [firstname, setFirstname] = useState<string>()
     const [secondname, setSecondname] = useState<string>()
     const [phone, setPhone] = useState<number>()
+    const [city, setCity] = useState<string>()
+    const [region, setRegion] = useState<string>()
     const register = (e: { preventDefault: () => void }) => {
         e.preventDefault()
         console.log(email)
-        if (email && lastname && firstname && secondname && phone) {
+        if (email && lastname && firstname && secondname && phone && city && region) {
             console.log(email)
             createTenant.mutate({
                 email: email,
                 lastname: lastname,
                 firstname: firstname,
                 secondname: secondname,
-                phone: phone
+                phone: phone,
+                city: city,
+                region: region
             })
             // eslint-disable-next-line react-hooks/rules-of-hooks
             void router.replace('/')
@@ -30,7 +34,7 @@ const CreateTenant: FC = () => {
     }
     return (
         <>
-            <form className="flex flex-col" onSubmit={register}>
+            <form className="flex flex-col gap-2 mt-20" onSubmit={register}>
                 <label>Почта</label>
                 <PrimaryInput onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Почта агента" />
                 <label>Фамилия</label>
@@ -41,7 +45,11 @@ const CreateTenant: FC = () => {
                 <PrimaryInput onChange={(e) => setSecondname(e.target.value)} value={secondname} placeholder="Отчество" />
                 <label>Телефон</label>
                 <PrimaryInput onChange={(e) => setPhone(Number(e.target.value))} value={phone} placeholder="Телефон" type="number" />
-                <input type="submit" />
+                <label>Населённый пункт</label>
+                <PrimaryInput onChange={(e) => setCity(e.target.value)} value={city} placeholder="Населённый пункт" type="text" />
+                <label>Регион</label>
+                <PrimaryInput onChange={(e) => setRegion(e.target.value)} value={region} placeholder="Регион" type="text" />
+                <input className="w-full bg-slate-200 rounded-xl mb-5 mt-3 h-10" type="submit" />
             </form>
         </>
     )
