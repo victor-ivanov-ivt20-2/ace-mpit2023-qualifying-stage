@@ -5,7 +5,7 @@ import boost from '~/assets/boost.png'
 interface RequestCardProps {
     address: string,
     description: string,
-    people: number,
+    people: string,
     start_at: Date,
     finsih_at: Date,
     status: string,
@@ -37,7 +37,7 @@ const RequestCard: FC<RequestCardProps> = ({
                     <h1 className=" font-extrabold text-[16px] leading-6">Цена неопределена</h1>
                     <h3 className="mb-3 font-bold text-[12px] leading-[16px] ">{address ? address : ""}</h3>
                     <div className="flex gap-1">
-                        <span className="text-[10px] font-bold leading-[11px] py-1 px-3 rounded-2xl bg-[#E9DBFB] text-[#9552DC]">{people} человек</span>
+                        <span className="text-[10px] font-bold leading-[11px] py-1 px-3 rounded-2xl bg-[#E9DBFB] text-[#9552DC]">{people}</span>
                         <span className="text-[10px] font-bold leading-[11px] py-1 px-3 rounded-2xl bg-[#DAF4EB] text-[#23A037]">{start_at.toLocaleDateString(undefined, { month: "numeric", day: "numeric" }) + " - " + finsih_at.toLocaleDateString(undefined, { month: "numeric", day: "numeric" })}</span>
                     </div>
                     <p className="mt-3 text-[#1E293B] font-medium text-xs opacity-50">{description}</p>
